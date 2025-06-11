@@ -6,7 +6,7 @@ from sentence_transformers import SentenceTransformer
 modelo = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Lendo os chunks
-with open("chunks.txt", "r", encoding="utf-8") as f:
+with open("chunks_pt.txt", "r", encoding="utf-8") as f:
     chunks = f.read().split("-----\n")
     chunks = [c.strip() for c in chunks if c.strip()]
 

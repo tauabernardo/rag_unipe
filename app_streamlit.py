@@ -1,3 +1,5 @@
+import nest_asyncio
+nest_asyncio.apply()
 import faiss
 import numpy as np
 import streamlit as st
@@ -32,7 +34,7 @@ if st.button("🔎 Consultar"):
         resultados = buscar_resposta(pergunta)
         for i, (trecho, distancia) in enumerate(resultados):
             st.write(f"**Trecho {i+1}** (🔍 Distância: `{distancia:.4f}`):")
-            st.code(trecho[:1500] + ("..." if len(trecho) > 1500 else ""), language="markdown")
+            st.markdown(f"<div style='text-align: justify; font-size: 15px'>{trecho[:1500]}{'...' if len(trecho) > 1500 else ''}</div>", unsafe_allow_html=True)
             st.write("---")
     else:
         st.warning("❗ Por favor, digite uma pergunta.")
